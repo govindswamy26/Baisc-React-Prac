@@ -1,0 +1,94 @@
+
+useState :
+
+1...The useState hook in React is a fundamental tool that enables functional components to manage and update their internal state.
+2...It allows you to introduce state variables into functional components, which were previously only available in class components.
+Here's how useState works:
+a...Importing useState: You need to import useState from the react library at the top of your component file:
+JavaScript
+
+*** import React, { useState } from 'react';
+
+b...Declaring a State Variable: Inside your functional component, you call useState to declare a state variable. It takes one argument: the initial value of your state variable. It returns an array containing two elements:
+The current state value.
+A setter function to update that state value.
+You typically use array destructuring to extract these two elements:
+JavaScript
+
+*** const [count, setCount] = useState(0);
+In this example, count is the state variable initialized to 0, and setCount is the function used to update count.
+Updating the State: To modify the state variable, you call its corresponding setter function, passing the new value as an argument. When the setter function is called, React re-renders the component with the updated state.
+JavaScript
+
+    setCount(count + 1); // Increments the count
+
+Using the State: You can use the state variable directly within your JSX to display its value or incorporate it into your component's logic.
+JavaScript
+
+    <p>You clicked {count} times</p>
+
+### Key Points about useState:
+ Functional Components:
+1...useState is designed for use within functional components, allowing them to become stateful.
+
+2...Immutability:
+When updating state, it's crucial to create a new value rather than directly modifying the existing one, especially for objects and arrays, to ensure React detects the change and re-renders correctly.
+
+3...Initial State:
+The initial value provided to useState is only used during the first render of the component. Subsequent re-renders will use the current state value, not re-initialize it.
+
+4...Setter Function for Previous State:
+If your new state depends on the previous state, you can pass a function to the setter, which receives the previous state as an argument:
+*** setCount(prevCount => prevCount + 1);
+
+📘 Destructuring in React: [ ] vs { }
+
+1. [ ] → Array Destructuring
+   - Used when destructuring arrays
+   - Example:
+     const [a, b] = [10, 20];          // a = 10, b = 20
+     const [count, setCount] = useState(0); // React Hook returns array
+
+2. { } → Object Destructuring
+   - Used when destructuring objects
+   - Example:
+     const { name, age } = { name: 'Govind', age: 21 };
+     function Profile({ name, age }) {
+       return <div>{name} - {age}</div>;
+     }
+
+3. Special Case: useEffect Dependencies
+   - Always use [ ] as it's an array of dependencies:
+     useEffect(() => { ... }, [count]);
+
+📝 Summary Table:
+| Symbol | Use Case             | Example                             |
+|--------|----------------------|-------------------------------------|
+| [ ]    | Array Destructuring  | const [a, b] = arr                  |
+| { }    | Object Destructuring | const {x, y} = obj                  |
+
+
+*******************  Practise Questions  ********************
+
+📘 React `useState` Practice Questions
+
+🔰 Beginner Level:
+1. Create a counter with Increment and Decrement buttons.
+2. Toggle text between "ON" and "OFF" on button click.
+3. Change background color of a div using a color input and `useState`.
+4. Create a like button that toggles between "Like" and "Liked".
+5. Update a text input and display the entered value below it.
+
+⚙️ Intermediate Level:
+6. Build a simple todo app where you can add and remove tasks.
+7. Create a form with name and email, and display entered data on submit.
+8. Track mouse position (x, y) and display it using state.
+9. Build a simple image slider using state to track image index.
+10. Create a dropdown and display the selected option.
+
+🚀 Advanced Level:
+11. Implement a tab system (e.g., Home | About | Contact) using `useState`.
+12. Create a star rating component (1 to 5 stars) with active highlight.
+13. Build a toggleable password visibility input.
+14. Build a poll/voting component that shows result as percentages.
+15. Build a dark/light theme toggle and update page style accordingly.
