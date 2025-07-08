@@ -1,0 +1,26 @@
+.complete {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+.container {
+  border: 2px solid #6b6f73;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #d9dde0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(102, 135, 170, 0.3);
+  cursor: pointer;
+}
+
+.container img {
+  object-fit: contain;
+  margin-bottom: 10px;
+}
