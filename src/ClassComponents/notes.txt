@@ -1,0 +1,4 @@
+ React Hooks for Memoization:
+ 1. useMemo     → memoize computed values
+ 2. useCallback → memoize functions
+ (React.memo)   → memoize components (not a hook)

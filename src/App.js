@@ -32,10 +32,19 @@ import "./App.css";
 // import OnlineOffline from "./2.UseEffect/OnlineOffline";
 // import CountDown from "./2.UseEffect/CountDown";
 // import TabSystem from "./2.UseEffect/TabSystem";
-import Timer from "./2.UseEffect/Timer";
+// import Timer from "./2.UseEffect/Timer";
 import { useState } from "react";
-import LeavingPage from "./2.UseEffect/LeavingPage";
-import ModalExample from "./2.UseEffect/ModelExample";
+import CompUseRef2 from "./3.UseRef/CompUseRef2";
+import CompUseRef3 from "./3.UseRef/CompUseRef3";
+import CompUseRef4 from "./3.UseRef/CompUseRef4";
+import Typing from "./3.UseRef/Typing";
+import Form from "./3.UseRef/Form";
+import CounterRerender from "./3.UseRef/CounterRerender";
+// import LeavingPage from "./2.UseEffect/LeavingPage";
+// import ModalExample from "./2.UseEffect/ModelExample";
+// import Prac1 from "./3.UseRef/Prac1";
+// import CompUseRef from "./3.UseRef/CompUseRef";
+// import CompUseRef1 from "./3.UseRef/CompUseRef1";
 function App() {
   const [show, setShow] = useState(true);
   return (
@@ -73,10 +82,20 @@ function App() {
       {show && <Timer></Timer>} */}
       {/* <LeavingPage></LeavingPage> */}
       {/* <ModalExample></ModalExample> */}
+
+      {/* UseRef */}
+      {/* <Prac1></Prac1> */}
+      {/* <CompUseRef></CompUseRef> */}
+      {/* <CompUseRef1></CompUseRef1> */}
+      {/* <CompUseRef2></CompUseRef2> */}
+      {/* {show && <CompUseRef3></CompUseRef3>}
+      <button onClick={() => setShow((prev) => !prev)}>toogle</button> */}
+      {/* <CompUseRef4></CompUseRef4> */}
+      {/* <Typing></Typing> */}
+      {/* <Form /> */}
+      <CounterRerender></CounterRerender>
     </div>
   );
 }
 
 export default App;
-
-

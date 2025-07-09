@@ -1,3 +1,39 @@
+
+useState = re-render the component when the state value changes
+
+useRef() = UseReference Does not cause re-renders when it's value changes.
+when you want component to remember some infromation
+but you don't want that information to trigger new render
+
+1. Accessing/Intercating with DOM elements
+2. Handling Focus, Animations, and Transitions
+3. Managinng Timers and Intervals
+
+The useRef hook in React is a built-in hook that provides a way to persist mutable values across component renders without triggering re-renders. It returns a mutable ref object with a single current property, which can be used to store a value that persists between renders. [1]  
+Key characteristics and uses of useRef: 
+
+• Persisting values without re-renders: Unlike state variables managed by useState, changes to a ref's .current property do not cause the component to re-render. This makes useRef ideal for storing values that are not directly used for rendering the UI but are essential for the component's behavior or internal logic. 
+• Accessing DOM elements: One of the most common applications of useRef is to directly access and interact with DOM elements. By attaching a ref to a JSX element using the ref attribute (e.g., &lt;input ref={inputRef} /&gt;), you can obtain a direct reference to the underlying DOM node and perform actions like focusing an input, playing a video, or measuring dimensions. [2]  
+• Storing previous state values: useRef can also be used to keep track of the previous value of a state or prop. This is useful for scenarios where you need to compare the current value with its previous counterpart. 
+
+Example of useRef for DOM access: 
+import React, { useRef } from 'react';
+
+function FocusInput() {
+  const inputRef = useRef(null); // Initialize with null
+
+  const handleFocusClick = () => {
+    inputRef.current.focus(); // Access the DOM element and call its method
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleFocusClick}>Focus Input</button>
+    </div>
+  );
+}
+
 // 🔰 Basic Level
 
 1. Create a component with an input field and a button. On button click, focus the input using useRef.
@@ -23,3 +59,5 @@
 13. Use useRef to create a scroll-to-section feature (scroll to a specific div on button click).
 14. Detect clicks outside of a dropdown or modal using useRef and event listeners.
 15. Track how long a component has been mounted (in seconds) using useRef and setInterval.
+
+
