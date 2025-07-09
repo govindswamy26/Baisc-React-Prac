@@ -1,0 +1,25 @@
+// 🔰 Basic Level
+
+1. Create a component with an input field and a button. On button click, focus the input using useRef.
+2. Track how many times a component has rendered using useRef.
+3. Show previous value of a state variable using useRef.
+4. Create a countdown timer and store interval ID using useRef, then clear it on unmount.
+5. Build a stop-watch that starts/stops on button click using useRef for interval tracking.
+
+
+// 🧩 Intermediate Level
+
+6. Create a component that detects whether a user is typing (add “Typing…” message while typing, hide after 2s of inactivity).
+7. Create a form with validation and store each input's validity using refs.
+8. Prevent re-renders of a counter by using useRef instead of useState.
+9. Implement a custom hook usePrevious using useRef to track previous state.
+10. Build a modal that traps focus using useRef and DOM manipulation.
+
+
+// ⚙️ Advanced + Practical UI Scenarios
+
+11. Create an animated input field that focuses when a modal opens (simulate modal behavior).
+12. Build a to-do app where each to-do item has a `useRef` for managing direct input edits.
+13. Use useRef to create a scroll-to-section feature (scroll to a specific div on button click).
+14. Detect clicks outside of a dropdown or modal using useRef and event listeners.
+15. Track how long a component has been mounted (in seconds) using useRef and setInterval.

@@ -86,17 +86,89 @@ If your new state depends on the previous state, you can pass a function to the 
 
 
 b...useEffect
+✅ useEffect Explained with Mounting, Updating, and Unmounting
+-------------------------------------------------------------
+
+🔹 useEffect replaces 3 lifecycle methods in class components:
+   1. componentDidMount
+   2. componentDidUpdate
+   3. componentWillUnmount
+
+// 🔹 Syntax:
+useEffect(() => {
+  // ✅ Runs on Mount and Update (by default)
+
+  return () => {
+    // ✅ Cleanup function: runs on Unmount or before next update
+  };
+}, [dependencies]);
+
+-------------------------------------------------------------
+🔸 1. Mounting (componentDidMount)
+useEffect runs after the component mounts if dependency array is []
+
+useEffect(() => {
+  console.log("Component mounted");
+}, []);
+
+// -------------------------------------------------------------
+// 🔸 2. Updating (componentDidUpdate)
+// useEffect runs when the values inside dependency array change
+
+useEffect(() => {
+  console.log("Component updated due to change in 'count'");
+}, [count]);
+
+-------------------------------------------------------------
+🔸 3. Unmounting (componentWillUnmount)
+Return function from useEffect runs on component unmount
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log("Running every second");
+  }, 1000);
+
+  return () => {
+    clearInterval(interval); // ✅ Cleanup
+    console.log("Component unmounted");
+  };
+}, []);
+
+-------------------------------------------------------------
+🔹 Why Hooks (useEffect) instead of Class Lifecycle Methods?
+
+✅ Functional components are simpler and more readable
+✅ All side effects handled in one place (useEffect)
+✅ No need for multiple lifecycle methods (like in classes)
+✅ Easier to isolate logic with custom hooks
+✅ Encouraged in modern React (React 16.8+)
+
+-------------------------------------------------------------
+🔸 Class Component Lifecycle Equivalent:
+
+componentDidMount() { ... }   ==>   useEffect(() => { ... }, [])
+componentDidUpdate() { ... }  ==>   useEffect(() => { ... }, [value])
+componentWillUnmount() { ... } ==>  return () => { ... } inside useEffect
+
 
 useRef
 
-useContext
+ React Hooks for Memoization:
+ 1. useMemo     → memoize computed values
+ 2. useCallback → memoize functions
+ (React.memo)   → memoize components (not a hook)
+
+
+// 🔷 React Context API includes:
+
+1. React.createContext()         create context object
+2. <Context.Provider>            provide value to children
+3. <Context.Consumer>            consume value (old way)
+4. useContext(Context)           consume value (modern hook)
+5. ClassComponent.contextType    class-based access
+
 
 useReducer
-
-useMemo
-
-useCallback
-
 Custom Hooks
 
 

@@ -34,6 +34,8 @@ import "./App.css";
 // import TabSystem from "./2.UseEffect/TabSystem";
 import Timer from "./2.UseEffect/Timer";
 import { useState } from "react";
+import LeavingPage from "./2.UseEffect/LeavingPage";
+import ModalExample from "./2.UseEffect/ModelExample";
 function App() {
   const [show, setShow] = useState(true);
   return (
@@ -69,8 +71,12 @@ function App() {
       {/* <TabSystem></TabSystem> */}
       {/* <button onClick={(prev) => setShow(!prev)}>Toogle</button>
       {show && <Timer></Timer>} */}
+      {/* <LeavingPage></LeavingPage> */}
+      {/* <ModalExample></ModalExample> */}
     </div>
   );
 }
 
 export default App;
+
+
