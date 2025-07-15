@@ -1,4 +1,33 @@
-import logo from "./logo.svg";
+// // App.jsx
+import React from "react";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import Home from "./8.React-Routing/Pages/Home";
+// import About from "./8.React-Routing/Pages/About";
+// import Contact from "./8.React-Routing/Pages/Contact";
+// import Products from "./8.React-Routing/Pages/Products";
+// import NavBar from "./8.React-Routing/Components/NavBar";
+// import ProductDetails from "./8.React-Routing/Pages/ProductDetails";
+// import Govind from "./8.React-Routing/Pages/Govind";
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <NavBar />
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/about" element={<About />} />
+//         <Route path="/contact" element={<Contact />}>
+//           <Route path="govind" element={<Govind />} />
+//         </Route>
+//         <Route path="/products" element={<Products />} />
+//         <Route path="/products/:id" element={<ProductDetails />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+
 import "./App.css";
 //UseState hooks
 // import Component2 from "./1.UseState/Component2";
@@ -33,20 +62,27 @@ import "./App.css";
 // import CountDown from "./2.UseEffect/CountDown";
 // import TabSystem from "./2.UseEffect/TabSystem";
 // import Timer from "./2.UseEffect/Timer";
-import { useState } from "react";
-import CompUseRef2 from "./3.UseRef/CompUseRef2";
-import CompUseRef3 from "./3.UseRef/CompUseRef3";
-import CompUseRef4 from "./3.UseRef/CompUseRef4";
-import Typing from "./3.UseRef/Typing";
-import Form from "./3.UseRef/Form";
-import CounterRerender from "./3.UseRef/CounterRerender";
+// import { useState } from "react";
+// import CompUseRef2 from "./3.UseRef/CompUseRef2";
+// import CompUseRef3 from "./3.UseRef/CompUseRef3";
+// import CompUseRef4 from "./3.UseRef/CompUseRef4";
+// import Typing from "./3.UseRef/Typing";
+// import Form from "./3.UseRef/Form";
+// import CounterRerender from "./3.UseRef/CounterRerender";
+// import Student from "./0.Props&Children/Student";
+// import UseMemoHook from "./4.Memoization/useMemo/UseMemoHook";
+// import Child from "./4.Memoization/Child";
+// import UseCallbackHook from "./4.Memoization/UseCallbackHook";
+//import NavBar from "./8.React-Routing/Components/NavBar";
 // import LeavingPage from "./2.UseEffect/LeavingPage";
 // import ModalExample from "./2.UseEffect/ModelExample";
 // import Prac1 from "./3.UseRef/Prac1";
 // import CompUseRef from "./3.UseRef/CompUseRef";
 // import CompUseRef1 from "./3.UseRef/CompUseRef1";
+import A from "./5.ContextApi/withPropsDrilling/A";
 function App() {
-  const [show, setShow] = useState(true);
+  // const [show, setShow] = useState(true);
+  const name = "govind";
   return (
     <div className="App">
       {/* <Component1></Component1> */}
@@ -93,7 +129,18 @@ function App() {
       {/* <CompUseRef4></CompUseRef4> */}
       {/* <Typing></Typing> */}
       {/* <Form /> */}
-      <CounterRerender></CounterRerender>
+      {/* <CounterRerender></CounterRerender> */}
+      {/* <Student name="Govind" age={"30"} isStudent={true} />
+      <Student name="Surya" age={23} isStudent={true}></Student>
+      <Student name="Sudheer" age={22} isStudent={false} />
+      <Student name="Saiteja" age={23} isStudent={true} />
+      <Student name="LPU"></Student> */}
+      {/* <UseMemoHook></UseMemoHook> */}
+      {/* <NavBar></NavBar> */}
+      {/* <UseCallbackHook></UseCallbackHook> */}
+
+      {/* Props Drilling */}
+      <A name={name}></A>
     </div>
   );
 }

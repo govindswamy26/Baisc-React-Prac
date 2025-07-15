@@ -1,0 +1,117 @@
+
+
+
+Props : read-only properties that are shared between components 
+
+1.. A parent component can send data to child component.
+2.. <Component  key = value />
+
+props is js object
+
+Prop-types
+
+Default props - default values for props in case they are not passed from the parent component
+
+
+🔹 React Props: Core Concepts
+
+1. Props Definition
+   - "Props" are inputs passed to a component from its parent
+   - Read-only (immutable) inside the receiving component
+
+2. Passing Props
+   - Props can be passed as attributes
+     <User name="Govind" age={21} />
+
+3. Accessing Props
+   - In functional components: props.name or destructure: const { name } = props
+
+4. Default Props
+   - Set default values using defaultProps
+     Component.defaultProps = { name: "Guest" }
+
+5. Prop Types (type checking)
+   - Use PropTypes to validate types
+     Component.propTypes = { name: PropTypes.string }
+
+6. Children Prop
+   - props.children represents everything passed between <Component>...</Component>
+   - Useful for reusable layout, modals, wrappers
+
+7. Conditional Rendering using Props
+   - Render different elements/components based on prop values
+
+8. Dynamic Styling with Props
+   - Use props to apply dynamic CSS (inline or with styled-components)
+
+9. Callback Props
+   - Pass functions as props from parent to child to handle events
+     <Button onClick={handleClick} />
+
+10. Component Composition with Props
+    - Pass entire components or JSX as props (e.g. <Layout header={<Header />} />)
+
+11. Spread Operator with Props
+    - Use {...props} to forward all props to another component
+
+12. Props Drilling
+    - Passing props through many nested components (can be solved with Context API)
+
+13. Controlled Components (Forms)
+    - Input components receive value and onChange as props from parent
+
+14. Memoization and Props
+    - React.memo() prevents re-renders if props don’t change
+
+15. Destructuring Props in Parameters
+    - Instead of props.name, use: function MyComp({ name, age })
+
+16. Passing Arrays/Objects as Props
+    - Can pass any data type including arrays, objects, functions
+
+17. Using Props in Class Components
+    - Accessed via this.props.name
+
+
+
+🔹 Beginner Level
+
+1. Create a UserCard component
+   - Pass name, age, and email as props
+   - Display them inside the component
+
+2. Build a Welcome component
+   - Accept a name prop and render: "Hello, {name}!"
+
+3. Create a Button component
+   - Accept label and onClick function as props
+   - Show an alert when clicked
+
+4. Create a Container component
+   - Use props.children to render content inside a styled div
+
+5. Build a List component
+   - Accept multiple children and render them as <li> items in <ul>
+
+
+🔹 Intermediate Level
+
+6. Compose a Modal component
+   - Accept children as the body content
+   - Accept a title prop for the header
+
+7. Create a Layout component
+   - Accept header, sidebar, and children content via props
+   - Arrange them in a grid layout
+
+8. Make a Card component
+   - Accept props like title, imageUrl, and children
+   - Render title and image on top, children as content
+
+9. Design a Tabs component
+   - Accept children for tab panels
+   - Accept props to configure tab titles and active tab
+
+10. Build a Notification component
+   - Accept type (success, error, info) and children
+   - Render styled message box based on type

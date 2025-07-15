@@ -1,0 +1,273 @@
+ React Hooks for Memoization:
+ 1. useMemo     → memoize computed values
+ 2. useCallback → memoize functions
+ (React.memo)   → memoize components (not a hook)
+
+
+Use Memo : 
+Store the answer after calling if it is asking again just return
+Expensive operations / Task / Calculations some task's which takes more time without any needed then we use useMemo hook which will save time
+
+ for any fixed input useMemo direclty return without function call if input change then function call and save it in useMemo
+
+
+Here is a **complete and clear guide to `useMemo()`** in React — covering all concepts, syntax, use cases, examples, and best practices in an **editor-friendly format**:
+
+---
+
+```jsx
+// 🔹 What is useMemo?
+
+// useMemo() memoizes the result of a function — it returns a cached value.
+// React only re-computes the memoized value when dependencies change.
+
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+```
+
+---
+
+### 🔸 When to Use `useMemo()`
+
+```jsx
+// ✅ 1. Expensive calculations (loops, heavy computation)
+// ✅ 2. Avoid recalculating derived state unless input changes
+// ✅ 3. Avoid unnecessary re-renders in React.memo child components
+```
+
+---
+
+### 🔸 Syntax
+
+```jsx
+const result = useMemo(() => {
+  // expensive calculation
+  return value;
+}, [dependencies]);
+```
+
+---
+
+### 🔸 Example 1: Expensive calculation
+
+```jsx
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [input, setInput] = useState(1);
+
+  const double = useMemo(() => {
+    console.log("Expensive calculation");
+    for (let i = 0; i < 1e9; i++) {}
+    return input * 2;
+  }, [input]);
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Inc Count</button>
+      <input value={input} onChange={(e) => setInput(Number(e.target.value))} />
+      <p>Double: {double}</p>
+    </>
+  );
+};
+```
+
+---
+
+### 🔸 Example 2: Optimizing React.memo child
+
+```jsx
+const Parent = () => {
+  const [count, setCount] = useState(0);
+
+  const list = useMemo(() => [1, 2, 3], []); // stable reference
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <Child list={list} />
+    </>
+  );
+};
+
+const Child = React.memo(({ list }) => {
+  console.log("Child rendered");
+  return <div>{list.join(", ")}</div>;
+});
+```
+
+---
+
+### 🔸 Common Mistakes
+
+```jsx
+// ❌ useMemo without dependency (will not update when value changes)
+const result = useMemo(() => compute(value), []);
+
+// ✅ Correct
+const result = useMemo(() => compute(value), [value]);
+```
+
+---
+
+### 🔸 Comparison with useCallback
+
+```jsx
+// useMemo: memoizes a RETURN VALUE
+const memoValue = useMemo(() => expensiveCalc(), [deps]);
+
+// useCallback: memoizes a FUNCTION
+const memoFn = useCallback(() => handleClick(), [deps]);
+```
+
+---
+
+### 🔸 Rules
+
+```jsx
+// 🔹 Only call useMemo at the top level of your component
+// 🔹 Dependency array must include all variables used inside
+// 🔹 Don't overuse — useMemo adds memory and complexity
+```
+
+---
+
+### 🧠 Summary
+
+```jsx
+// ✅ useMemo memoizes expensive calculations
+// ✅ Prevents re-computation unless dependencies change
+// ✅ Used with React.memo to avoid child re-renders
+// ✅ Improves performance in large or complex components
+```
+
+---
+
+Let me know if you want advanced `useMemo` usage in lists, sorting, filtering, or with context.
+
+************UseCallback() ************************8
+
+ Here's a **complete guide to `useCallback()` in React**, with all key concepts, use cases, and rules — in a clean, editor-friendly format:
+
+---
+
+```jsx
+// 🔹 What is useCallback?
+
+// useCallback() returns a memoized version of a callback function.
+// It helps prevent unnecessary re-creation of functions on every render.
+
+const memoizedCallback = useCallback(() => {
+  // function body
+}, [dependencies]);
+```
+
+---
+
+### 🔸 When to Use `useCallback()`
+
+```jsx
+// ✅ 1. When passing functions to memoized child components (React.memo)
+// ✅ 2. To avoid unnecessary effect triggers in useEffect
+// ✅ 3. To avoid unnecessary re-renders caused by new function references
+```
+
+---
+
+### 🔸 Syntax
+
+```jsx
+const memoizedFn = useCallback(() => {
+  // some logic
+}, [dependency1, dependency2]);
+```
+
+---
+
+### 🔸 Example 1: Prevent child re-render
+
+```jsx
+const Parent = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log("Clicked");
+  }, []); // stable function
+
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Inc</button>
+      <Child onClick={handleClick} />
+    </>
+  );
+};
+
+const Child = React.memo(({ onClick }) => {
+  console.log("Child re-render");
+  return <button onClick={onClick}>Click</button>;
+});
+```
+
+---
+
+### 🔸 Example 2: useCallback inside useEffect
+
+```jsx
+const Component = () => {
+  const [value, setValue] = useState(0);
+
+  const logValue = useCallback(() => {
+    console.log("Value:", value);
+  }, [value]);
+
+  useEffect(() => {
+    logValue();
+  }, [logValue]);
+};
+```
+
+---
+
+### 🔸 Common Mistakes
+
+```jsx
+// ❌ Recreating function every render (causes unnecessary re-renders)
+const handleClick = () => {};
+
+// ✅ Fix: useCallback with dependencies
+const handleClick = useCallback(() => {}, []);
+```
+
+---
+
+### 🔸 Comparison with useMemo
+
+```jsx
+// useMemo: memoizes a computed VALUE
+const cachedValue = useMemo(() => computeExpensiveValue(), [deps]);
+
+// useCallback: memoizes a FUNCTION
+const memoizedFn = useCallback(() => doSomething(), [deps]);
+```
+
+---
+
+### 🔸 Rules
+
+```jsx
+// 🔹 Only call useCallback at top level (like other hooks)
+// 🔹 Dependencies must include all variables used inside the callback
+```
+
+---
+
+### 🧠 Summary
+
+```jsx
+// ✅ useCallback memoizes functions
+// ✅ Prevents function re-creation on every render
+// ✅ Used when passing stable functions to memoized components (React.memo)
+// ✅ Helps optimize performance in large apps or deeply nested structures
+```
+
+---
+
+Let me know if you want advanced examples like throttling, debouncing, or using with `useReducer`.
